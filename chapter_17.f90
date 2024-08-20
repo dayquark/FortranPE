@@ -40,12 +40,16 @@ subroutine flow_a_to_b(flow_A, dia_A, dia_B, p_A, p_B)
     print *, '-----------------------------'
 
     !Assume that ID is same as dia
-    area_A = areaInFt2(dia_A)
+    call areaInFt2(dia_A, area_A)
     print *, 'Area (ft2) at point A: ', area_A
+
+    call areaInFt2(dia_B, area_B)
+    print *, 'Area (ft2) at point B: ', area_B
 
 end subroutine
 
-subroutine areaInFt2(dia)
+! Returns area in ft^2 
+subroutine areaInFt2(dia, area)
     implicit none
     real, intent(in) :: dia !inch
     real, intent(out) :: area !ft2
